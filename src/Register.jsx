@@ -186,7 +186,7 @@ function Register() {
 
         <label>First Name *</label>
         <input
-          id="nameinput"
+       
           type="text"
           placeholder="Enter First Name"
           value={firstname}
@@ -230,6 +230,13 @@ function Register() {
           />
           {mobileError && <span className="MerrorRight">{mobileError}</span>}
 
+          
+        <button type="button"  className="otp" >
+     Send OTP
+        </button>
+
+          <label>OTP *</label>
+           <input type="tel" placeholder="Enter OTP"disabled/>
           <label>Password *</label>
           <div style={{ position: "relative" }}>
             <input
@@ -241,13 +248,7 @@ function Register() {
               className={passwordError ? "PinputError" : ""}
             />
             <span
-              style={{
-                position: "absolute",
-                right: "10px",
-                top: "10px",
-                cursor: "pointer",
-                fontSize: "14px"
-              }}
+              className="toggleIcon"
               onClick={() => setShowPassword(!showPassword)}
             >
               {showPassword ? "🙈" : "👁"}
@@ -266,13 +267,7 @@ function Register() {
               className={confirmPasswordError ? "PinputError" : ""}
             />
             <span
-              style={{
-                position: "absolute",
-                right: "10px",
-                top: "10px",
-                cursor: "pointer",
-                fontSize: "14px"
-              }}
+           className="toggleIcon"
               onClick={() =>
                 setShowConfirmPassword(!showConfirmPassword)
               }
@@ -295,6 +290,21 @@ function Register() {
           />
           {emailError && <span className="NerrorRight">{emailError}</span>}
 
+
+                
+        <button type="button"  className="otp" >
+     Send OTP
+        </button>
+
+                    <label>OTP *</label>
+ <input
+               type="tel"
+            placeholder="Enter OTP"
+
+           disabled
+            />
+
+
           <label>Gender *</label>
           <select
             id="gender"
@@ -308,21 +318,11 @@ function Register() {
           </select>
 
         </div>
-
-
-
-
-
-        
-
         {formMessage && (
           <div className="formMessage">
             {formMessage}
           </div>
         )}
-
-
-
 <p className="p">
   By registering you agree to{" "}
   <a
@@ -334,9 +334,6 @@ function Register() {
     Terms and Conditions
   </a>
 </p>
-
-
-
         <button
           className={`button ${isFormFilled ? "activeButton" : "disabledButton"}`}
           type="submit"

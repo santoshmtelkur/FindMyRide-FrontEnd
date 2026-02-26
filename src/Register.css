@@ -159,3 +159,20 @@ label {
   color: #c70000;
   border: 1px solid #c70000;
 }
+
+
+
+.toggleIcon {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+  font-size: 14px;
+}  
+
+.otp{
+width:80px;
+font-size: 12px;
+margin-left: 219px;
+
+}
