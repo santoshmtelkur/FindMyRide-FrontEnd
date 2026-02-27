@@ -176,3 +176,19 @@ font-size: 12px;
 margin-left: 219px;
 
 }
+
+#logintext{
+
+margin-left: 108px;
+
+
+}
+#login{
+background-color: rgb(23, 36, 108);
+
+}
+
+#login:hover {
+  background-color: rgb(42, 148, 25);
+  transform: scale(1.02);
+}

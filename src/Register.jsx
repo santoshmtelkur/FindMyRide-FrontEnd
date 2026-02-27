@@ -5,6 +5,8 @@ function Register() {
 
   const [firstname, setfirstname] = useState("");
   const [firstnameError, setFirstnameError] = useState("");
+  
+  const [isMobileValid, setIsMobileValid] = useState(false);
 
   const [lastname, setLastname] = useState("");
   const [lastnameError, setLastnameError] = useState("");
@@ -60,13 +62,16 @@ function Register() {
   const validateMobile = () => {
     if (!mobile.trim()) {
       setMobileError("");
+          setIsMobileValid(false);
       return true;
     }
     if (!/^[0-9]{10}$/.test(mobile)) {
       setMobileError("Enter valid 10 digit mobile number");
+          setIsMobileValid(false);
       return false;
     }
     setMobileError("");
+        setIsMobileValid(true);
     return true;
   };
 
@@ -231,7 +236,7 @@ function Register() {
           {mobileError && <span className="MerrorRight">{mobileError}</span>}
 
           
-        <button type="button"  className="otp" >
+        <button type="button"    disabled={!isMobileValid} className="otp" >
      Send OTP
         </button>
 
@@ -341,6 +346,9 @@ function Register() {
         >
           <span id="button2">SignUp</span>
         </button>
+
+        <p id="logintext">Already a user</p>
+        <button type="button" id="login">Login</button>
 
       </form>
     </div>
