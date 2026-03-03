@@ -7,6 +7,7 @@ function Register() {
   const [firstnameError, setFirstnameError] = useState("");
   
   const [isMobileValid, setIsMobileValid] = useState(false);
+  const [isemailValid, setIsemailValid] = useState(false);
 
   const [lastname, setLastname] = useState("");
   const [lastnameError, setLastnameError] = useState("");
@@ -32,6 +33,12 @@ function Register() {
   const [formMessage, setFormMessage] = useState("");
 
   // ---------- VALIDATIONS (No empty validation on blur) ----------
+
+
+
+
+
+  
 
   const validatefirstname = () => {
     if (!firstname.trim()) {     
@@ -104,13 +111,16 @@ function Register() {
   const validateEmail = () => {
     if (!email.trim()) {
       setEmailError("");
+      setIsemailValid(false);
       return true;
     }
     if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email)) {
       setEmailError("Enter valid email address");
+       setIsemailValid(false);
       return false;
     }
     setEmailError("");
+     setIsemailValid(true);
     return true;
   };
 
@@ -297,7 +307,7 @@ function Register() {
 
 
                 
-        <button type="button"  className="otp" >
+        <button type="button"   disabled={!isemailValid} className="otp" >
      Send OTP
         </button>
 
