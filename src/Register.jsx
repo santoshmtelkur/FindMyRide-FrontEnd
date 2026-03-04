@@ -31,10 +31,57 @@ function Register() {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const [formMessage, setFormMessage] = useState("");
+  const [isOtpSent, setIsOtpSent] = useState(false);
+  const [emailOtp,  setEmailOtp] = useState(false);
+
 
   // ---------- VALIDATIONS (No empty validation on blur) ----------
 
 
+
+
+
+const sendOtp = async () => {
+  try {
+    const response = await fetch("http://localhost:8080/send-otp", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+
+    const result = await response.text();
+
+    if (result === "success") {
+      setIsOtpSent(true);
+    }
+
+  } catch (error) {
+    console.log("OTP error");
+  }
+};
+
+
+
+const sendOtpemail = async () => {
+  try {
+    const response = await fetch("http://localhost:8080/otpemail", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+
+    const result = await response.text();
+
+    if (result === "success") {
+      setEmailOtp(true);
+    }
+
+  } catch (error) {
+    console.log("OTP error");
+  }
+};
 
 
 
@@ -245,13 +292,23 @@ function Register() {
           />
           {mobileError && <span className="MerrorRight">{mobileError}</span>}
 
-          
-        <button type="button"    disabled={!isMobileValid} className="otp" >
-     Send OTP
-        </button>
+
+<button
+  type="button"
+  onClick={sendOtp}
+  disabled={!isMobileValid}
+  className="otp"
+>
+  Send OTP
+</button>
+
 
           <label>OTP *</label>
-           <input type="tel" placeholder="Enter OTP"disabled/>
+          <input
+  type="tel"
+  placeholder="Enter OTP"
+  disabled={!isOtpSent}
+/>
           <label>Password *</label>
           <div style={{ position: "relative" }}>
             <input
@@ -307,7 +364,7 @@ function Register() {
 
 
                 
-        <button type="button"   disabled={!isemailValid} className="otp" >
+        <button type="button"   onClick={sendOtpemail}  disabled={!isemailValid} className="otp" >
      Send OTP
         </button>
 
@@ -315,8 +372,9 @@ function Register() {
  <input
                type="tel"
             placeholder="Enter OTP"
+              disabled={!emailOtp}
 
-           disabled
+         
             />
 
 
