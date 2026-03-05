@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./Register.css";
-
+import { useNavigate } from "react-router-dom";
 function Register() {
 
   const [firstname, setfirstname] = useState("");
@@ -37,7 +37,7 @@ function Register() {
 
   // ---------- VALIDATIONS (No empty validation on blur) ----------
 
-
+const navigate = useNavigate();
 
 
 
@@ -416,7 +416,13 @@ const sendOtpemail = async () => {
         </button>
 
         <p id="logintext">Already a user</p>
-        <button type="button" id="login">Login</button>
+     <button
+  type="button"
+  id="login"
+  onClick={() => navigate("/login")}
+>
+  Login
+</button>
 
       </form>
     </div>
