@@ -64,21 +64,7 @@ function Login() {
       return;
     }
 
-    const formData = { emailOrPhone, password };
-
-    try {
-      const response = await fetch("http://localhost:8080/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData)
-      });
-
-      const result = await response.text();
-      setFormMessage(result);
-
-    } catch (error) {
-      setFormMessage("Error connecting to server.");
-    }
+   
   };
 
   return (
