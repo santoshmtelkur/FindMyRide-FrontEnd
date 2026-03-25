@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #f0f2f5;
+}
+
+/* MAIN */
+.home-container {
+  min-height: 100vh;
+  position: relative;
+}
+
+/* ─── NAVBAR ─── */
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 20px;
+  background: #fff;
+}
+
+.nav-logo {
+  font-size: 22px;
+  font-weight: 700;
+  margin-right: 20px;
+}
+
+/* buttons */
+.nav-btn {
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: 1px solid #d0e0ff;
+  background: #f0f5ff;
+  color: #0066ff;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+/* ─── CENTER ─── */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 80px;
+}
+
+.welcome-text {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* inputs */
+.location-input {
+  width: 350px;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  border: 1.5px solid #e2e6ea;
+  background: #f7f8fa;
+}
+
+/* button */
+.see-price-btn {
+  margin-top: 10px;
+  width: 200px;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  background: linear-gradient(135deg, #0066ff, #0052cc);
+  cursor: pointer;
+}
+
+/* ─── BOTTOM LEFT ─── */
+.feedback-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+
+  width: auto;              /* IMPORTANT */
+  padding: 8px 14px;        /* same as nav buttons */
+  border-radius: 10px;
+
+  border: 1px solid #d0e0ff;
+  background: #f0f5ff;
+  color: #0066ff;
+
+  font-size: 13px;
+  cursor: pointer;
+}
+
+/* ─── BOTTOM RIGHT ─── */
+.follow-label {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+
+  font-size: 14px;
+  white-space: nowrap;
+}
