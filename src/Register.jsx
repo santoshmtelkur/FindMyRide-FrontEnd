@@ -1,11 +1,13 @@
+import API_URL from "./api";
 import { useState } from "react";
 import "./Register.css";
 import { useNavigate } from "react-router-dom";
+
 function Register() {
 
   const [firstname, setfirstname] = useState("");
   const [firstnameError, setFirstnameError] = useState("");
-  
+
   const [isMobileValid, setIsMobileValid] = useState(false);
   const [isemailValid, setIsemailValid] = useState(false);
 
@@ -32,63 +34,42 @@ function Register() {
 
   const [formMessage, setFormMessage] = useState("");
   const [isOtpSent, setIsOtpSent] = useState(false);
-  const [emailOtp,  setEmailOtp] = useState(false);
+  const [emailOtp, setEmailOtp] = useState(false);
 
+  const navigate = useNavigate();
 
-  // ---------- VALIDATIONS (No empty validation on blur) ----------
-
-const navigate = useNavigate();
-
-
-
-const sendOtp = async () => {
-  try {
-    const response = await fetch("http://localhost:8080/send-otp", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
+  const sendOtp = async () => {
+    try {
+      const response = await fetch(`${API_URL}/send-otp`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" }
+      });
+      const result = await response.text();
+      if (result === "success") {
+        setIsOtpSent(true);
       }
-    });
-
-    const result = await response.text();
-
-    if (result === "success") {
-      setIsOtpSent(true);
+    } catch (error) {
+      console.log("OTP error");
     }
+  };
 
-  } catch (error) {
-    console.log("OTP error");
-  }
-};
-
-
-
-const sendOtpemail = async () => {
-  try {
-    const response = await fetch("http://localhost:8080/otpemail", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
+  const sendOtpemail = async () => {
+    try {
+      const response = await fetch(`${API_URL}/otpemail`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" }
+      });
+      const result = await response.text();
+      if (result === "success") {
+        setEmailOtp(true);
       }
-    });
-
-    const result = await response.text();
-
-    if (result === "success") {
-      setEmailOtp(true);
+    } catch (error) {
+      console.log("OTP error");
     }
-
-  } catch (error) {
-    console.log("OTP error");
-  }
-};
-
-
-
-  
+  };
 
   const validatefirstname = () => {
-    if (!firstname.trim()) {     
+    if (!firstname.trim()) {
       setFirstnameError("");
       return true;
     }
@@ -116,16 +97,16 @@ const sendOtpemail = async () => {
   const validateMobile = () => {
     if (!mobile.trim()) {
       setMobileError("");
-          setIsMobileValid(false);
+      setIsMobileValid(false);
       return true;
     }
     if (!/^[0-9]{10}$/.test(mobile)) {
       setMobileError("Enter valid 10 digit mobile number");
-          setIsMobileValid(false);
+      setIsMobileValid(false);
       return false;
     }
     setMobileError("");
-        setIsMobileValid(true);
+    setIsMobileValid(true);
     return true;
   };
 
@@ -163,29 +144,24 @@ const sendOtpemail = async () => {
     }
     if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(email)) {
       setEmailError("Enter valid email address");
-       setIsemailValid(false);
+      setIsemailValid(false);
       return false;
     }
     setEmailError("");
-     setIsemailValid(true);
+    setIsemailValid(true);
     return true;
   };
 
   const validateCountry = () => {
-    if (!countryCode) {
-      return false;
-    }
+    if (!countryCode) return false;
     return true;
   };
 
   const validateGender = () => {
-    if (!gender) {
-      return false;
-    }
+    if (!gender) return false;
     return true;
   };
 
-  // ---------- BUTTON ENABLE CHECK ----------
   const isFormFilled =
     firstname.trim() !== "" &&
     mobile.trim() !== "" &&
@@ -194,10 +170,8 @@ const sendOtpemail = async () => {
     countryCode !== "" &&
     gender !== "";
 
-  // ---------- SUBMIT ----------
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     setFormMessage("");
 
     const isValid =
@@ -226,15 +200,13 @@ const sendOtpemail = async () => {
     };
 
     try {
-      const response = await fetch("http://localhost:8080/signup", {
+      const response = await fetch(`${API_URL}/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData)
       });
-
       const result = await response.text();
       setFormMessage(result);
-
     } catch (error) {
       setFormMessage("Error saving data.");
     }
@@ -248,7 +220,6 @@ const sendOtpemail = async () => {
 
         <label>First Name *</label>
         <input
-       
           type="text"
           placeholder="Enter First Name"
           value={firstname}
@@ -273,7 +244,6 @@ const sendOtpemail = async () => {
 
           <label>Country Code *</label>
           <select
-            id="gender"
             value={countryCode}
             onChange={(e) => setCountryCode(e.target.value)}
           >
@@ -292,23 +262,22 @@ const sendOtpemail = async () => {
           />
           {mobileError && <span className="MerrorRight">{mobileError}</span>}
 
-
-<button
-  type="button"
-  onClick={sendOtp}
-  disabled={!isMobileValid}
-  className="otp"
->
-  Send OTP
-</button>
-
+          <button
+            type="button"
+            onClick={sendOtp}
+            disabled={!isMobileValid}
+            className="otp"
+          >
+            Send OTP
+          </button>
 
           <label>OTP *</label>
           <input
-  type="tel"
-  placeholder="Enter OTP"
-  disabled={!isOtpSent}
-/>
+            type="tel"
+            placeholder="Enter OTP"
+            disabled={!isOtpSent}
+          />
+
           <label>Password *</label>
           <div style={{ position: "relative" }}>
             <input
@@ -339,17 +308,13 @@ const sendOtpemail = async () => {
               className={confirmPasswordError ? "PinputError" : ""}
             />
             <span
-           className="toggleIcon"
-              onClick={() =>
-                setShowConfirmPassword(!showConfirmPassword)
-              }
+              className="toggleIcon"
+              onClick={() => setShowConfirmPassword(!showConfirmPassword)}
             >
               {showConfirmPassword ? "🙈" : "👁"}
             </span>
           </div>
-          {confirmPasswordError && (
-            <span className="PerrorRight">{confirmPasswordError}</span>
-          )}
+          {confirmPasswordError && <span className="PerrorRight">{confirmPasswordError}</span>}
 
           <label>Email</label>
           <input
@@ -362,25 +327,24 @@ const sendOtpemail = async () => {
           />
           {emailError && <span className="NerrorRight">{emailError}</span>}
 
+          <button
+            type="button"
+            onClick={sendOtpemail}
+            disabled={!isemailValid}
+            className="otp"
+          >
+            Send OTP
+          </button>
 
-                
-        <button type="button"   onClick={sendOtpemail}  disabled={!isemailValid} className="otp" >
-     Send OTP
-        </button>
-
-                    <label>OTP *</label>
- <input
-               type="tel"
+          <label>OTP *</label>
+          <input
+            type="tel"
             placeholder="Enter OTP"
-              disabled={!emailOtp}
-
-         
-            />
-
+            disabled={!emailOtp}
+          />
 
           <label>Gender *</label>
           <select
-            id="gender"
             value={gender}
             onChange={(e) => setGender(e.target.value)}
           >
@@ -391,22 +355,11 @@ const sendOtpemail = async () => {
           </select>
 
         </div>
-        {formMessage && (
-          <div className="formMessage">
-            {formMessage}
-          </div>
-        )}
-<p className="p">
-  By registering you agree to{" "}
-  <a
-    href="https://example.com/terms"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="termsLink"
-  >
-    Terms and Conditions
-  </a>
-</p>
+
+        {formMessage && <div className="formMessage">{formMessage}</div>}
+
+        <p className="p">By registering you agree to <a href="https://example.com/terms" target="_blank" rel="noopener noreferrer" className="termsLink">Terms and Conditions</a></p>
+
         <button
           className={`button ${isFormFilled ? "activeButton" : "disabledButton"}`}
           type="submit"
@@ -416,13 +369,14 @@ const sendOtpemail = async () => {
         </button>
 
         <p id="logintext">Already a user</p>
-     <button
-  type="button"
-  id="login"
-  onClick={() => navigate("/login")}
->
-  Login
-</button>
+
+        <button
+          type="button"
+          id="login"
+          onClick={() => navigate("/login")}
+        >
+          Login
+        </button>
 
       </form>
     </div>
