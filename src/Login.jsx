@@ -129,7 +129,7 @@ function Login() {
         <button
           type="button"
           id="login"
-          onClick={() => navigate("/")}
+          onClick={() => navigate("/Register")}
         >
           Create New Account
         </button>
