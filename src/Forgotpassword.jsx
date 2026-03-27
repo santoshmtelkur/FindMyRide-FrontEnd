@@ -9,7 +9,7 @@ function Forgotpassword() {
   const [inputError, setInputError] = useState("");
   const [isInputValid, setIsInputValid] = useState(false);
 
-  const [otpSent, setOtpSent] = useState(false);
+ // const [otpSent, setOtpSent] = useState(false);
 
   const [password, setPassword] = useState("");
   const [passwordError, setPasswordError] = useState("");
@@ -70,11 +70,11 @@ function Forgotpassword() {
     return true;
   };
 
-  const sendOtp = () => {
+ /* const sendOtp = () => {
     if (validateInput()) {
       setOtpSent(true);
     }
-  };
+  };*/
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -113,7 +113,7 @@ function Forgotpassword() {
         />
         {inputError && <span className="NerrorRight">{inputError}</span>}
 
-        <button
+       {/* <button
           type="button"
           onClick={sendOtp}
           disabled={!isInputValid}
@@ -128,7 +128,7 @@ function Forgotpassword() {
           placeholder="Enter OTP"
           disabled={!otpSent}
         />
-
+           */}
         <label>Password *</label>
         <div style={{ position: "relative" }}>
           <input

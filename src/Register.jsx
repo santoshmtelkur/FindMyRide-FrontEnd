@@ -33,12 +33,12 @@ function Register() {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const [formMessage, setFormMessage] = useState("");
-  const [isOtpSent, setIsOtpSent] = useState(false);
-  const [emailOtp, setEmailOtp] = useState(false);
+ // const [isOtpSent, setIsOtpSent] = useState(false);
+  //const [emailOtp, setEmailOtp] = useState(false);
 
   const navigate = useNavigate();
 
-  const sendOtp = async () => {
+ /* const sendOtp = async () => {
     try {
       const response = await fetch(`${API_URL}/send-otp`, {
         method: "POST",
@@ -66,7 +66,7 @@ function Register() {
     } catch (error) {
       console.log("OTP error");
     }
-  };
+  };*/
 
   const validatefirstname = () => {
     if (!firstname.trim()) {
@@ -262,7 +262,7 @@ function Register() {
           />
           {mobileError && <span className="MerrorRight">{mobileError}</span>}
 
-          <button
+         {/* <button
             type="button"
             onClick={sendOtp}
             disabled={!isMobileValid}
@@ -277,8 +277,8 @@ function Register() {
             placeholder="Enter OTP"
             disabled={!isOtpSent}
           />
-
-          <label>Password *</label>
+           */} 
+         <label>Password *</label>
           <div style={{ position: "relative" }}>
             <input
               type={showPassword ? "text" : "password"}
@@ -326,7 +326,7 @@ function Register() {
             className={emailError ? "NinputError" : ""}
           />
           {emailError && <span className="NerrorRight">{emailError}</span>}
-
+      {/*
           <button
             type="button"
             onClick={sendOtpemail}
@@ -342,7 +342,7 @@ function Register() {
             placeholder="Enter OTP"
             disabled={!emailOtp}
           />
-
+                */} 
           <label>Gender *</label>
           <select
             value={gender}
