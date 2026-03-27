@@ -1,6 +1,9 @@
 import "./Home.css";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
+    const navigate = useNavigate();
+
 return(
 <div className="home-container">
 
@@ -10,8 +13,8 @@ return(
     <button className="nav-btn">Contact Us</button>
     <button className="nav-btn">About Us</button>
     <button className="nav-btn">Total Saving</button>
-    <button className="nav-btn">History</button>
     <button className="nav-btn">User Profile</button>
+    <button className="nav-btn"  onClick={() => navigate("/login")}>Login/Register</button>
   </div>
 
   <div className="main-content">
