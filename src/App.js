@@ -3,10 +3,13 @@ import Register from "./Register";
 import Home from "./Home";
 import Login from "./Login";
 import Forgotpassword from "./Forgotpassword";
-
+import Header from "./Header";
 function App() {
   return (
-    <Router>
+ <Router>
+          <Header/>
+
+   
       <Routes>
          <Route path="/" element={<Home />} />
         <Route path="/Register" element={<Register />} />
