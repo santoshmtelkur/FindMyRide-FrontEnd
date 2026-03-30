@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #f0f2f5;
+}
+
+/* container */
+.home-container {
+  min-height: 100vh;
+  padding: 20px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* top button */
+.location {
+  width: 220px;
+  padding: 12px;
+  margin-bottom: 14px;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  background: linear-gradient(135deg, #0066ff, #0052cc);
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* Auto / Car / Bike */
+.category {
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+  font-size: 17px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 10px 0 6px;
+}
+
+/* row layout */
+.row {
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Rapido / Ola / Uber */
+.provider {
+  width: 80px;
+  font-weight: 600;
+  color: #444;
+}
+
+/* box */
+.box {
+  flex: 1;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border: 1px solid #e2e6ea;
+  border-radius: 12px;
+  background: #ffffff;
+}
+
+/* text */
+.text {
+  display: flex;
+  flex-direction: column;
+}
+
+.text p {
+  margin: 0;
+  font-size: 13px;
+  color: #1a1a2e;
+}
+
+/* button */
+.book-btn {
+  width: auto;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #0066ff, #0052cc);
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}

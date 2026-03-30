@@ -69,7 +69,7 @@ function Login() {
 
   return (
     <div className="container">
-      <h2 className="form1">FindMyRide</h2>
+     
 
       <form className="form" onSubmit={handleSubmit} noValidate>
 

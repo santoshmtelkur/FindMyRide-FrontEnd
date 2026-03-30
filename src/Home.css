@@ -105,3 +105,14 @@ body {
   font-size: 14px;
   white-space: nowrap;
 }
+.activeButton {
+  background: linear-gradient(135deg, #0066ff, #0052cc);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 102, 255, 0.25);
+}
+.disabledButton {
+  background: #c8d8ff;
+  color: #fff;
+  cursor: not-allowed;
+  box-shadow: none;
+}
