@@ -1,7 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import "./Result.css";
+import { useState } from "react";
 
 function Result() {
+
+ const [sourceinput, setSourceinput] = useState("Bengaluru");
+    const [destinationinput, setDestinationinput] = useState("Mysuru");
+
   const navigate = useNavigate();
 
   return (
@@ -12,6 +17,25 @@ function Result() {
       </button>
 
 {/*----------------Auto ----------------------*/}
+
+ <input
+                    className="location-input"
+                    placeholder="Enter Pickup"
+                    value={sourceinput}
+                  
+                    onChange={(e) =>  setSourceinput(e.target.value)}
+                />
+
+                <p>To</p>
+                <input
+                    className="location-input"
+                    placeholder="Enter destination"
+                    value={destinationinput}
+                        onChange={(e) => setDestinationinput(e.target.value)}
+                />
+
+
+
   <p className="category">Auto</p>
 
   <div className="row">

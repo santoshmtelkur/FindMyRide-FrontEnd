@@ -2,13 +2,13 @@ import { useNavigate } from "react-router-dom";
 import "./Home.css";
 import MyLogo from './MyLogo.png';
 
-function Header() {
+function Header() { 
   const navigate = useNavigate();
 
   return (
     <div className="navbar">
-  <img className="logoheader" src={MyLogo} alt="logo" />
-   <button className="nav-btn" onClick={() => navigate("/")}>Home</button>
+  <img className="logoheader" src={MyLogo} alt="logo" onClick={() => navigate("/")} />
+   
       <button className="nav-btn">Contact Us</button>
       <button className="nav-btn">About Us</button>
       <button className="nav-btn">Total Saving</button>
@@ -20,5 +20,7 @@ function Header() {
     </div>
   );
 }
-
 export default Header;
+
+
+

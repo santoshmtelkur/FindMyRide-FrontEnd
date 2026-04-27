@@ -117,7 +117,7 @@ body {
   box-shadow: none;
 }
 .logoheader {
-  height: 34px;          /* same visual height as buttons */
+  height: 100px;          /* same visual height as buttons */
   width: auto;           /* keep aspect ratio */
   object-fit: contain;
 

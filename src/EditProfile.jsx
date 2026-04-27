@@ -6,7 +6,7 @@ function EditProfile() {
   const navigate = useNavigate();
   const [firstname, setfirstname] = useState("");
   const [firstnameError, setFirstnameError] = useState("");
-
+                                                                     
   const [lastname, setLastname] = useState("");
   const [lastnameError, setLastnameError] = useState("");
 
@@ -120,7 +120,7 @@ function EditProfile() {
 
       <form className="form" onSubmit={handleSubmit} noValidate>
 
-        <label>First Name</label>
+        <label>First Name</label> 
         <input
           type="text"
           placeholder="Enter First Name"
@@ -155,7 +155,7 @@ function EditProfile() {
 
         <label>Email</label>
         <input
-          type="email"
+          type="email" 
           placeholder="Enter Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
