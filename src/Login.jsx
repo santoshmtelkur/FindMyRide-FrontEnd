@@ -51,6 +51,8 @@ function Login() {
     e.preventDefault();
     setFormMessage("");
 
+    
+
     const isValid =
       validateEmail() &&
       validatePassword();
@@ -61,7 +63,7 @@ function Login() {
     }
 
     const formData = {
-      identifier: email,
+      email,
       password
     };
 
@@ -69,7 +71,8 @@ function Login() {
       const response = await fetch("http://localhost:8080/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(formData),
+         credentials: "include"
       });
 
       const result = await response.text();
@@ -84,7 +87,7 @@ function Login() {
 
 
   
-          if (formMessage === "Success") {
+          if ( formMessage =="success") {
       navigate("/"); 
     }
 

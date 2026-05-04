@@ -7,15 +7,27 @@ function Home() {
 
     const [sourceinput, setSourceinput] = useState("");
     const [destinationinput, setDestinationinput] = useState("");
+  
+
 
     const isFormFilled =
         sourceinput.trim() !== "" &&
         destinationinput.trim() !== "";
+           
+    const [name, setName] = useState("");
+
+ fetch("http://localhost:8080/profile", {
+  method: "GET",
+  credentials: "include"  
+})
+.then(res => res.text())
+.then(data => setName(data))
+.catch(err => console.log(err));
 
     return (
         <div className="home-container">
             <div className="main-content">
-                <h2 className="welcome-text">Welcome</h2>
+                <h2 className="welcome-text">Welcome {name}</h2>
 
                 <input
                     className="location-input"
